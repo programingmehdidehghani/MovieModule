@@ -2,6 +2,7 @@ package com.example.movieapi.di
 
 import com.example.data.repository.MoviesRepositoryImpl
 import com.example.data.services.MoviesServices
+import com.example.domain.interactor.GetMoviesInteractor
 import com.example.domain.repositories.MoviesRepository
 import org.koin.dsl.module
 
@@ -12,17 +13,13 @@ val repositoryModules = module {
     }
 }
 
-/*val interactorModules = module {
-    factory (name =  GET_MOVIES_INTERACTOR){
-        GetMoviesInteractor(repositoryModules = get())
-    }
-}*/
 
-/*val networkModules = module {
-    single(name = RETROFIT_INSTANCE) {
-        createNetworkClient(BASE_URL)
+val interactorModules = module {
+    factory(name = GET_MOVIES_INTERACTOR) {
+        GetMoviesInteractor(moviesRepository = get())
     }
-}*/
+}
+
 
 private fun provideMoviesRepository(moviesServices: MoviesServices): MoviesRepository =
     MoviesRepositoryImpl(moviesServices = moviesServices)
