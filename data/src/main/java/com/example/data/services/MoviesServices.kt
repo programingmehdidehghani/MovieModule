@@ -6,6 +6,6 @@ import retrofit2.http.Query
 
 interface MoviesServices {
 
-    @GET("/3/movie/top_rated")
-    suspend fun movies(@Query("page") page: Int): Response<>
+   /* @GET("/3/movie/top_rated")
+    suspend fun movies(@Query("page") page: Int): Response<>*/
 }
