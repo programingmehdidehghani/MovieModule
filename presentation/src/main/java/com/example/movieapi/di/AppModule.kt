@@ -14,11 +14,11 @@ val repositoryModules = module {
 }
 
 
-val interactorModules = module {
+/*val interactorModules = module {
     factory(name = GET_MOVIES_INTERACTOR) {
         GetMoviesInteractor(moviesRepository = get())
     }
-}
+}*/
 
 
 private fun provideMoviesRepository(moviesServices: MoviesServices): MoviesRepository =
