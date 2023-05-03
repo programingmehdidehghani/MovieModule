@@ -35,7 +35,15 @@ class MoviesListAdapter : RecyclerView.Adapter<MoviesListAdapter.MoviesViewHolde
     }
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(moviesListOld[position])
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateList(list: MutableList<MoviesItemData>){
+        moviesList.addAll(list)
+        moviesListOld.clear()
+        moviesListOld.addAll(moviesList)
+        notifyDataSetChanged()
     }
 
     override fun getFilter(): Filter {
