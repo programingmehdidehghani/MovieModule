@@ -64,6 +64,7 @@ class MoviesListAdapter : RecyclerView.Adapter<MoviesListAdapter.MoviesViewHolde
                 return filterResults
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 if (!constraint.isNullOrEmpty()) {
                     moviesFilter = results?.values as MutableList<MoviesItemData>
@@ -74,6 +75,8 @@ class MoviesListAdapter : RecyclerView.Adapter<MoviesListAdapter.MoviesViewHolde
                     diffResult.dispatchUpdatesTo(this@MoviesListAdapter)
                 } else {
                     moviesListOld.clear()
+                    moviesListOld.addAll(moviesList)
+                    notifyDataSetChanged()
                 }
             }
 
